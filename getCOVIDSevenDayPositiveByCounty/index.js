@@ -26,7 +26,7 @@ module.exports = async function (context, req) {
 
     const percentPositive = (totals.totalPositives / totals.totalTests * 100).toFixed(2);
     
-    const textMessage = `${req.query.county} has had a %${percentPositive} positive rate over the last ${req.query.numberOfDays} days.`
+    const textMessage = `${req.query.county} has had a ${percentPositive}% positive rate over the last ${req.query.numberOfDays} days.`
 
     context.res = {
         status: 200,
