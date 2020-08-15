@@ -14,7 +14,7 @@ module.exports = async function (context, req) {
         }
     });
 
-    const data = response.data.features.slice(0, 7);
+    const data = response.data.features.slice(0, req.query.numberOfDays);
 
     const totals = data.reduce((agg, i) => {
         return {
@@ -26,8 +26,10 @@ module.exports = async function (context, req) {
 
     const percentPositive = (totals.totalPositives / totals.totalTests * 100).toFixed(2);
     
+    const textMessage = `${req.query.county} has had a %${percentPositive} positive rate over the last ${req.query.numberOfDays} days.`
+
     context.res = {
-        // status: 200, /* Defaults to 200 */ 
-        body: percentPositive
+        status: 200,
+        body: textMessage
     };
 }
