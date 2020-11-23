@@ -4,7 +4,7 @@ module.exports = async function (context, req) {
 
     const response = await axios({
         baseURL: 'https://dhsgis.wi.gov/',
-        url: `server/rest/services/DHS_COVID19/COVID19_WI/FeatureServer/10/query`,
+        url: `server/rest/services/DHS_COVID19/COVID19_WI/MapServer/12/query`,
         params: {
             where: `NAME='${req.query.county}'`,
             outFields: `GEO,NAME,POS_NEW,NEG_NEW,TEST_NEW,DATE`,
